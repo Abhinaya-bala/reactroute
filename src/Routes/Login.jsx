@@ -7,13 +7,20 @@ class Login extends Component {
         this.state = {
             name: '',
             password: ''
+
         }
+        console.log(this.context)
     }
 
     handlChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
+    }
+    handleLogin = (e) => {
+        const { login } = this.context
+        login({ name: this.state.name, password: this.state.password })
+        this.props.history.push('/')
     }
 
     render() {
@@ -24,7 +31,7 @@ class Login extends Component {
                 <input type="text" value={this.state.name} onChange={this.handlChange} name="name" />
                 <label>Password</label>
                 <input type="password" value={this.state.password} onChange={this.handlChange} name="password" />
-                <button onClick={() => login({ name: this.state.name, phone: this.state.password })} >Login</button>
+                <button onClick={() => this.handleLogin()} >Login</button>
             </div >
         )
     }

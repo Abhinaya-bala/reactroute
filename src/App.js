@@ -14,9 +14,9 @@ function App() {
       <Switch>
         <Route exact path="/" render={() => <Home />} />
         <Route path="/cart" render={() => <Cart />} />
-        <Route path="/login" render={() => <Login />} />
+        <Route path="/login" render={(props) => <Login {...props} />} />
         <Route path="/order" render={() => <Order />} />
-        <Route path="/product/:id" render={(props) => <Product {...props}/>} />
+        <Route path="/product/:id" render={(props) => <Product {...props} />} />
       </Switch>
     </div>
   );

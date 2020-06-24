@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom"
 import SingleItem from '../components/SingleItem';
 import { AppContext } from '../AppProvider';
 
@@ -7,9 +8,12 @@ class Home extends Component {
         super(props)
     }
     render() {
-        const { getData, addtoCart } = this.context
+        const { getData, addtoCart, isAuth } = this.context
         let data = getData()
         console.log(data)
+        if (!isAuth()) {
+            return <Redirect to="/login" />
+        }
         return (
             <div>
                 {

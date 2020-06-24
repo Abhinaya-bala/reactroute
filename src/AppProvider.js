@@ -26,10 +26,13 @@ class AppProvider extends Component {
         console.log(payload)
         var name = payload.name
         var password = payload.password
-        if (this.state.userName == name && this.state.password == password) {
+
+        if (this.state.user.userName == name && this.state.user.password == password) {
             this.setState({
                 isAuth: true
             })
+            console.log("am calling")
+            window.history.pushState({ urlPath: '/' }, "", '/')
         }
     }
     getAuth = () => {
@@ -71,7 +74,7 @@ class AppProvider extends Component {
             placeOder: this.placeOder,
             getFlag: this.getFlag,
             login: this.login,
-            isAuth: this.isAuth
+            isAuth: this.getAuth
         }
         return (
             <AppContext.Provider value={methods}>
