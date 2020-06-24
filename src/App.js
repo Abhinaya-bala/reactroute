@@ -16,7 +16,7 @@ function App() {
         <Route path="/cart" render={() => <Cart />} />
         <Route path="/login" render={() => <Login />} />
         <Route path="/order" render={() => <Order />} />
-        <Route path="/product" render={() => <Product />} />
+        <Route path="/product/:id" render={(props) => <Product {...props}/>} />
       </Switch>
     </div>
   );

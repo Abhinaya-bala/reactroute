@@ -7,7 +7,9 @@ class AppProvider extends Component {
         super(props)
         this.state = {
             data: data,
-            cart: []
+            cart: [],
+            orderArr:[],
+            flag:false
         }
     }
 
@@ -19,12 +21,25 @@ class AppProvider extends Component {
         return this.state.cart
     }
 
+    getOrderArr=()=>{
+        return this.state.orderArr
+    }
+
+    getFlag=()=>{
+        return this.state.flag
+    }
+
     addToCart = (payload) => {
-        console.log(payload)
         var item = this.state.data.find(ele => ele.id == payload)
-        console.log(item)
         this.setState({
             cart: [...this.state.cart, item]
+        })
+    }
+
+    placeOder=(payload)=>{
+        this.setState({
+            orderArr: [...this.state.orderArr, payload],
+            flag:true
         })
     }
 
@@ -33,6 +48,9 @@ class AppProvider extends Component {
             getData: this.getData,
             addToCart: this.addToCart,
             getCart: this.getCart,
+            getOrderArr:this.getOrderArr,
+            placeOder:this.placeOder,
+            getFlag:this.getFlag
         }
         return (
             <AppContext.Provider value={methods}>
