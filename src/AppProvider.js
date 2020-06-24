@@ -8,8 +8,13 @@ class AppProvider extends Component {
         this.state = {
             data: data,
             cart: [],
-            orderArr:[],
-            flag:false
+            orderArr: [],
+            flag: false,
+            user: {
+                userName: "admin",
+                password: "admin"
+            },
+            isAuth: false
         }
     }
 
@@ -17,15 +22,29 @@ class AppProvider extends Component {
         return this.state.data
     }
 
+    login = (payload) => {
+        console.log(payload)
+        var name = payload.name
+        var password = payload.password
+        if (this.state.userName == name && this.state.password == password) {
+            this.setState({
+                isAuth: true
+            })
+        }
+    }
+    getAuth = () => {
+        return this.state.isAuth
+    }
+
     getCart = () => {
         return this.state.cart
     }
 
-    getOrderArr=()=>{
+    getOrderArr = () => {
         return this.state.orderArr
     }
 
-    getFlag=()=>{
+    getFlag = () => {
         return this.state.flag
     }
 
@@ -36,10 +55,10 @@ class AppProvider extends Component {
         })
     }
 
-    placeOder=(payload)=>{
+    placeOder = (payload) => {
         this.setState({
             orderArr: [...this.state.orderArr, payload],
-            flag:true
+            flag: true
         })
     }
 
@@ -48,9 +67,11 @@ class AppProvider extends Component {
             getData: this.getData,
             addToCart: this.addToCart,
             getCart: this.getCart,
-            getOrderArr:this.getOrderArr,
-            placeOder:this.placeOder,
-            getFlag:this.getFlag
+            getOrderArr: this.getOrderArr,
+            placeOder: this.placeOder,
+            getFlag: this.getFlag,
+            login: this.login,
+            isAuth: this.isAuth
         }
         return (
             <AppContext.Provider value={methods}>
