@@ -1,24 +1,40 @@
-import React, {createContext, Component} from "react";
+import React, { createContext, Component } from "react";
 import data from "./data.json";
-export const AppContext=createContext();
+export const AppContext = createContext();
 
-class AppProvider extends Component{
-    constructor(props){
+class AppProvider extends Component {
+    constructor(props) {
         super(props)
-        this.state={
-            data:data
+        this.state = {
+            data: data,
+            cart: []
         }
     }
 
-    getData=()=>{
+    getData = () => {
         return this.state.data
     }
 
-    render(){
-        const methods={
-            getData:this.getData 
+    getCart = () => {
+        return this.state.cart
+    }
+
+    addToCart = (payload) => {
+        console.log(payload)
+        var item = this.state.data.find(ele => ele.id == payload)
+        console.log(item)
+        this.setState({
+            cart: [...this.state.cart, item]
+        })
+    }
+
+    render() {
+        const methods = {
+            getData: this.getData,
+            addToCart: this.addToCart,
+            getCart: this.getCart,
         }
-        return(
+        return (
             <AppContext.Provider value={methods}>
                 {this.props.children}
             </AppContext.Provider>

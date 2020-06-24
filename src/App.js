@@ -5,10 +5,12 @@ import Cart from './Routes/Cart';
 import Login from './Routes/Login';
 import Order from './Routes/Order';
 import Product from './Routes/Product';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div >
+      <Navbar />
       <Switch>
         <Route exact path="/" render={() => <Home />} />
         <Route path="/cart" render={() => <Cart />} />
