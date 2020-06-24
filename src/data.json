@@ -1,0 +1,25 @@
+[
+    {
+        "id": "ptd_01",
+        "name": "Takeo Single Bed In Walnut Finish",
+        "category": "Beds",
+        "size": "Single Bed",
+        "price": "8999",
+        "material": {
+            "id": "teak_wood",
+            "name": "teak wood"
+        },
+        "img": "https://ii1.pepperfry.com/media/catalog/product/t/a/494x544/takeo-single-bed-in-walnut-finish-by-mintwud-takeo-single-bed-in-walnut-finish-by-mintwud-rbur23.jpg"
+    },
+    {
+        "id": "ptd_02",
+        "name": "Miranda  Sofa in Sandy Brown Colour",
+        "category": "Sofas",
+        "size": "one seater",
+        "price": "12099",
+        "material": {
+            "id": "fabric",
+            "name": "Fabric"
+        }
+    }
+]
